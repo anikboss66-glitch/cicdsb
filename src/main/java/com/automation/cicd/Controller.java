@@ -10,6 +10,6 @@ public class Controller {
 
     @GetMapping("/message")
     public String message (){
-        return "Hello World Anik 2";
+        return "Hello World Anik 22";
     }
 }
