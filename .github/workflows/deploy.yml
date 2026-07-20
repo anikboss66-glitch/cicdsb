@@ -20,10 +20,13 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-          cache: maven
+          cache: gradle
 
-      - name: Build Jar
-        run: mvn clean package -DskipTests
+      - name: Grant execute permission for Gradle
+        run: chmod +x ./gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build -x test
 
       - name: Building Docker Image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}:latest .
